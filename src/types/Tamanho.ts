@@ -1,0 +1,1 @@
+export type Tamanho = 'xs' | 'base' | 'lg' | 'xl' | '2xl' | '3xl'
