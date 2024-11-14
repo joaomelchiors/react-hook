@@ -1,4 +1,4 @@
-import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconMathGreater, IconNumbers, IconRefreshAlert, IconSection, IconUsers } from "@tabler/icons-react"
+import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconLock, IconMathGreater, IconNumbers, IconRefreshAlert, IconSection, IconUsers } from "@tabler/icons-react"
 
 export const listaSecao = 
 [
@@ -84,6 +84,12 @@ export const listaSecao =
                 tag: "personalizados",
                 url: "/personalizados/tamanhoJanela",
             },
+            {
+                icone: <IconLock />,
+                titulo: "Validando Senha",
+                tag: "personalizados",
+                url: "/personalizados/senha",
+            }
         ]
     }
 ]

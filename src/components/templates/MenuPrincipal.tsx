@@ -6,6 +6,7 @@ import { MenuItem } from "@/data/models/menuItem"
 import MenuPrincipalItem from "./MenuPrincipalItem"
 import { listaSecao } from "@/data/listaSecao"
 
+
 interface MenuPrincipalProps {
     mini: boolean
 }
@@ -22,13 +23,19 @@ export default function MenuPrincipal(props:MenuPrincipalProps) {
                 url={items.url} 
                 icone={items.icone}
                 tag={items.tag}
-                mini={props.mini} />
+                mini={props.mini} 
+            />
         ))
     }
        
-    function renderizarSecoes():NonNullable<ReactNode> {
+    function renderizarSecoes():NonNullable<ReactNode> { 
         return listaSecao.map((secao:MenuSecao, index) => (
-            <MenuPrincipalSecao key={index} titulo={secao.titulo} aberta={secao.aberta} mini={props.mini}>
+            <MenuPrincipalSecao 
+                key={index} 
+                titulo={secao.titulo} 
+                aberta={secao.aberta} 
+                mini={props.mini}
+            >
                 {renderizarItems(secao.items)}
             </MenuPrincipalSecao>
         )) 

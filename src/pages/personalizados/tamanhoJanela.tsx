@@ -1,7 +1,7 @@
 import Display from "@/components/templates/Display";
 import Pagina from "@/components/templates/Pagina";
 import useSizeWindow from "@/data/hooks/useSizeWindow";
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
     const codeHTML = 'Modelo'
@@ -10,14 +10,14 @@ export default function Home() {
     //console.log('executando useSizeWindow')
     const tamanho = useSizeWindow()
     
-/*
+
     const [tamanhoFinal, setTamanhoFinal] = useState("")
     
     useEffect(()=> {
         setTamanhoFinal(tamanho || 'Calculando ...')
         console.log('renderizando...')
     }, [tamanho])
-*/    
+    
     return (
         <Pagina 
             titulo={"Qual é o tamanho da página?"} 
@@ -25,7 +25,7 @@ export default function Home() {
             codigoHTML={codeHTML}
             observacao={observacao}
         >
-            <Display texto={tamanho} />
+            <Display texto={tamanhoFinal} />
             <div className="w-40 h-40
             sm:bg-blue-300
             md:bg-pink-300

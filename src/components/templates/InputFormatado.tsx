@@ -1,9 +1,12 @@
+import { FormEventHandler } from "react"
+
+
 interface InputFormatadoProps {
     tipo: string
     valor: string | number
     label?: string
     className?: string
-    onInput?: () => void
+    onInput?: FormEventHandler<HTMLInputElement> | undefined
 }
 
 export default function InputFormatado(props:InputFormatadoProps) {
@@ -20,7 +23,7 @@ export default function InputFormatado(props:InputFormatadoProps) {
                     px-2 w-40 h-11 rounded-md
                     text-gray-600
                     ${props.className ?? ''}
-                `}    
+                `} 
             />
         </>
     )
