@@ -17,6 +17,7 @@ export default function useSizeWindow() {
         function sizeChange(){
             setSizeWindow(getSizeWindow())
             console.log('pegandoSize')
+            
         }
         window.addEventListener("resize", sizeChange)
         return ()=>{
@@ -25,6 +26,10 @@ export default function useSizeWindow() {
         }
     }, []) 
     //para usar o useEffect só não primeira renderização
+    
+    if (sizeWindow.largura <= 640) {
+        sizeWindow.largura = 640
+    }
 
     function entre(min: number, max:number) {
         return sizeWindow.largura >= min && sizeWindow.largura <= max
@@ -41,5 +46,5 @@ export default function useSizeWindow() {
     const tamanhoVerdadeiro = Object.entries(dimensoes).filter((e)=> e[1])
 
 
-    return tamanhoVerdadeiro[0]?.[0]
+    return [tamanhoVerdadeiro[0]?.[0], sizeWindow.largura] as const
 }

@@ -1,22 +1,25 @@
+import useToggle from "@/data/hooks/useToggle"
 import { IconMinus, IconPlus } from "@tabler/icons-react"
 import { ReactNode } from "react"
 
 interface MenuPrincipalSecaoProps {
     titulo: string
-    aberta: boolean
     mini: boolean
     children: NonNullable<ReactNode>
     onClick?: () => void
 }
 
 export default function MenuPrincipalSecao(props:MenuPrincipalSecaoProps) {
+    
+    const [isAberta, setIsAberta] = useToggle(true)
+    
     return (
         <div className={`
             flex flex-col gap-4
             ${props.mini && `items-center`}
         `}>
             <span 
-                onClick={() => props.onClick?.()}
+                onClick={() => setIsAberta()}
                 className={`
                 flex justify-between items-center
                 text-zinc-400 font-bold uppercase
@@ -26,11 +29,11 @@ export default function MenuPrincipalSecao(props:MenuPrincipalSecaoProps) {
                 {props.mini ? props.titulo : (
                     <>
                         {props.titulo}
-                        {props.aberta ? <IconMinus size={15}/> : <IconPlus size={15} />}
+                        {isAberta ? <IconMinus size={15}/> : <IconPlus size={15} />}
                     </>
                 )}
             </span>
-            {props.aberta && (
+            {isAberta && (
                 <div className="flex flex-col gap-1.5">
                     {props.children}
                 </div>

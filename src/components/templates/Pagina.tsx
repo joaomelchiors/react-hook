@@ -21,7 +21,7 @@ export default function Pagina(props:PaginaProps) {
              h-screen w-screen
             bg-zinc-900 text-white overflow-auto`
         }>
-            <MenuPrincipal mini={mini}/>
+            <MenuPrincipal />
             <div id="areaCabecalhoConteudo" className="
                 flex-1
                 flex flex-col p-7
