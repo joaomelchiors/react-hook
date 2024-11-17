@@ -13,7 +13,7 @@ interface PaginaProps {
 
 export default function Pagina(props:PaginaProps) {
     const mini:boolean = false
-    
+    console.log('Renderizei Pagina')
     return (
         <div className={`
             grid
@@ -22,7 +22,7 @@ export default function Pagina(props:PaginaProps) {
             bg-zinc-900 text-white overflow-auto`
         }>
             <MenuPrincipal />
-            <div id="areaCabecalhoConteudo" className="
+            <div id="areaCabecalhoEConteudo" className="
                 flex-1
                 flex flex-col p-7
             ">

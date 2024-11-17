@@ -19,8 +19,8 @@ export default function Botao(props:BotaoProps) {
     return (
         <button id="renderBotao" onClick={props.onClick}
             className={`
-            flex items-center justify-center
-            gap-2 px-1 h-${sizeForNumber(props.tamanho)}
+            flex items-center justify-center rounded-md
+            gap-2 px-1 h-${sizeForNumber(props.tamanho)} w-${sizeForNumber(props.tamanho)}
             ${`text-${props.tamanho ?? 'base'}`}
             hover:bg-opacity-80 select-none
             ${props.redondo && `rounded-full justify-center w-${sizeForNumber(props.tamanho)}`}

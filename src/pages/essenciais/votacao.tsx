@@ -8,10 +8,10 @@ export default function Home() {
 const [dados, setDados] = useState({votosVerde: 0, votosRoxo:0})
 
 //Atualizando os dados de forma direta
-setDados({ votosVerde: dados.votosVerde, votosRoxo: dados.votosRoxo + 1 });
+setDados({ votosVerde: dados.votosVerde + 1, votosRoxo: dados.votosRoxo});
 
 //Atualiando com a função de callback
-setDados({ votosVerde: dados.votosVerde, votosRoxo: dados.votosRoxo + 1 });`
+setDados({ votosVerde: dados.votosVerde, votosRoxo: dados.votosRoxo + 1});`
 
     const observacao = `Forma Direta ***
 Quando você está fazendo uma atualização direta pode causar problemas se o estado dados for atualizado rapidamente
@@ -26,7 +26,6 @@ ou a mudança ocorra com o estado correto.`
     const [dados, setDados] = useState({votosVerde: 0, votosRoxo:0})
 
 
-
   return (
     <Pagina 
       titulo={"Votação"} 
@@ -39,7 +38,7 @@ ou a mudança ocorra com o estado correto.`
             justify-center items-center
         `}>
             <Display
-                texto="Qual a melhor cor"
+                texto={`Qual a melhor cor?`}
                 textoComplementar={`Verde: ${dados.votosVerde} | Roxo: ${dados.votosRoxo}`}
             />
             <div className={`
@@ -49,13 +48,13 @@ ou a mudança ocorra com o estado correto.`
                     redondo
                     tamanho="2xl"
                     backGroundColor="bg-green-600" 
-                    onClick={() => setDados((dadosAtuais)=>({votosVerde: dadosAtuais.votosVerde, votosRoxo: dadosAtuais.votosRoxo + 1}))}
+                    onClick={() => setDados((dadosAtuais)=>({votosVerde: dadosAtuais.votosVerde +1, votosRoxo: dadosAtuais.votosRoxo}))}
                 />
                 <Botao 
                     redondo
                     tamanho="2xl"
                     backGroundColor="bg-purple-600" 
-                    onClick={() => setDados((dadosAtuais)=>({votosVerde: dadosAtuais.votosVerde + 1, votosRoxo: dadosAtuais.votosRoxo}))}
+                    onClick={() => setDados((dadosAtuais)=>({votosVerde: dadosAtuais.votosVerde, votosRoxo: dadosAtuais.votosRoxo + 1}))}
                 />
             </div>
             <Botao

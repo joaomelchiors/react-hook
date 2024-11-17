@@ -1,4 +1,4 @@
-import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconLock, IconMathGreater, IconNumbers, IconRefreshAlert, IconSection, IconUsers } from "@tabler/icons-react"
+import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconLock, IconMathGreater, IconNumbers, IconRefreshAlert, IconSection, IconShoppingCart, IconShoppingCartOff, IconUsers } from "@tabler/icons-react"
 
 export const listaSecao = 
 [
@@ -89,6 +89,24 @@ export const listaSecao =
                 titulo: "Validando Senha",
                 tag: "personalizados",
                 url: "/personalizados/senha",
+            }
+        ]
+    },
+    {
+        titulo: "Contexto",
+        aberta: true,
+        items: [
+            {
+                icone: <IconShoppingCartOff />,
+                titulo: "Loja Sem Contexto",
+                tag: "useContext",
+                url: "/contexto/lojaSemContexto",
+            },
+            {
+                icone: <IconShoppingCart />,
+                titulo: "Loja Com Contexto",
+                tag: "useContext",
+                url: "/contexto/lojaComContexto",
             }
         ]
     }

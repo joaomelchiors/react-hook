@@ -17,7 +17,6 @@ export default function useSizeWindow() {
         function sizeChange(){
             setSizeWindow(getSizeWindow())
             console.log('pegandoSize')
-            
         }
         window.addEventListener("resize", sizeChange)
         return ()=>{

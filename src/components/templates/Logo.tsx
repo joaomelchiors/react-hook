@@ -1,3 +1,4 @@
+import useTema from "@/data/hooks/useTema";
 import { IconFishHook } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -10,6 +11,14 @@ interface LogoProps {
 }
 
 export default function Logo(props:LogoProps) {
+    const contextTema = useTema()
+
+    if(!contextTema) {
+        return <p>Não há contextTema</p>
+    }
+    
+    const {corDeDestaque} = contextTema
+    
     return (
         <Link id="renderLogo" href={"/"} className={`cursor-pointer flex ${!props.mini ? 'gap-3' : '' } items-center`}>
             <div id="renderBoxLogoImg" className={`
@@ -19,7 +28,8 @@ export default function Logo(props:LogoProps) {
             `}>
                 <div id="renderBoxAzul" className={`
                     flex justify-center items-center
-                    bg-blue-500 rounded-lg
+                    bg-${corDeDestaque} rounded-lg
+                    transition-colors duration-500 ease-out
                     ${props.grande ? 'w-[150px] h-[150px]' : 'w-[50px] h-[50px]'}
                 `}>
                     <IconFishHook size={props.grande ? 100 : 30} />

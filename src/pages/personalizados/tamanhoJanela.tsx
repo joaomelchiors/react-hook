@@ -8,15 +8,16 @@ export default function Home() {
 
     const observacao = 'Modelo'
     //console.log('executando useSizeWindow')
-    const tamanho = useSizeWindow()
+    const [tamanho] = useSizeWindow()
     
-
+    //usa-se a variável tamanhoFinal para renderizar a pagina para não dar erro de hidratação
     const [tamanhoFinal, setTamanhoFinal] = useState("")
     
     useEffect(()=> {
-        setTamanhoFinal(tamanho || 'Calculando ...')
+        setTamanhoFinal(tamanho || 'calculando...')
         console.log('renderizando...')
-    }, [tamanho])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
     return (
         <Pagina 

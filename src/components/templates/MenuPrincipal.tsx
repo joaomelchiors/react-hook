@@ -10,15 +10,19 @@ import { listaSecao } from "@/data/listaSecao"
 import useToggle from "@/data/hooks/useToggle"
 import { IconMenu, IconX } from "@tabler/icons-react"
 import useSizeWindow from "@/data/hooks/useSizeWindow"
+import { IsSectionOpenProvider } from "@/data/context/IsSectionOpen"
 //import useBoolean from "@/data/hooks/useBoolean"
+
 
 
 export default function MenuPrincipal() {
     
     const [isMini, setIsMini, setTrue, setFalse] = useToggle (false)
+    //const [isSectionOpen, setIsSectionOpen] = useToggle (true)
     //const [isMini, setIsMini,  miniTrue] = useBoolean()
-    console.log('renderizando')
-    const [tamanho, sizeNumber] = useSizeWindow()
+    //console.log('renderizei MenuPrincipal')
+    const [tamanho, ] = useSizeWindow()
+
     /*
     useEffect(() => {
         if(sizeGrupo === 'md' || sizeGrupo === 'sm') {
@@ -51,46 +55,49 @@ export default function MenuPrincipal() {
        
     function renderizarSecoes():NonNullable<ReactNode> { 
         return listaSecao.map((secao:MenuSecao, index) => (
-            <MenuPrincipalSecao 
-                key={index} 
-                titulo={secao.titulo} 
-                mini={isMini}
-            >
-                {renderizarItems(secao.items)}
-            </MenuPrincipalSecao>
+            <IsSectionOpenProvider key={index}>
+                <MenuPrincipalSecao
+                    key={index}
+                    indice={index}
+                    titulo={secao.titulo} 
+                    mini={isMini}
+                >
+                    {renderizarItems(secao.items)}
+                </MenuPrincipalSecao>
+            </IsSectionOpenProvider>
         )) 
     }
 
-    return(
-        <aside id="renderBarraLateral" className={`
-            flex flex-col
-            bg-black shadow-md shadow-zinc-800
-            overflow-x-hidden overflow-y-scroll
-            scrollbar-thumb-zinc-700 scrollbar-track-zinc-800 
-            scrollbar-thin
-            ${isMini ? 'items-center w-[130px]' : 'w-[370px]'}
-        `}>
-            <div id="renderLogo" className="
-                flex justify-center items-center
-                m-7 gap-2
-            ">
-                <Logo mini={isMini}/>
-                {!isMini?
-                    <div className="cursor-pointer" onClick={()=>setIsMini()}>
-                        <IconMenu />
-                    </div>: ''
-                    }
-                
-            </div>
-                <div className="cursor-pointer" onClick={()=>setIsMini()}>
-                            {isMini?<IconX />: ''}
+    return( 
+            <aside id="renderBarraLateral" className={`
+                flex flex-col
+                bg-black shadow-md shadow-zinc-800
+                overflow-x-hidden overflow-y-scroll
+                scrollbar-thumb-zinc-700 scrollbar-track-zinc-800 
+                scrollbar-thin
+                ${isMini ? 'items-center w-[130px]' : 'w-[370px]'}
+            `}>
+                <div id="renderLogo" className="
+                    flex justify-center items-center
+                    m-7 gap-2
+                ">
+                    <Logo mini={isMini}/>
+                    {!isMini?
+                        <div className="cursor-pointer" onClick={()=>setIsMini()}>
+                            <IconMenu />
+                        </div>: ''
+                        }
+                    
                 </div>
+                    <div className="cursor-pointer" onClick={()=>setIsMini()}>
+                                {isMini?<IconX />: ''}
+                    </div>
 
-            <nav id="rederMenuNavegacao" className="
-                flex-1 flex flex-col gap-4 m-7
-            ">
-                {renderizarSecoes()}
-            </nav>
-        </aside>
+                <nav id="rederMenuNavegacao" className="
+                    flex-1 flex flex-col gap-4 m-7
+                ">
+                    {renderizarSecoes()}
+                </nav>
+            </aside>
     )
 }

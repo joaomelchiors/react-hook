@@ -1,3 +1,4 @@
+import useTema from "@/data/hooks/useTema";
 import { IconCode } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,6 +18,14 @@ export default function MenuPrincipalItem(props:MenuPrincipalItemProps) {
     const router = useRouter();
     const ativo = props.url === router.asPath;
 
+    const contextTema = useTema()
+
+    if(!contextTema) {
+        return <p>Não há contextTema</p>
+    }
+    
+    const {corDeDestaque} = contextTema
+
     return (
         <Link 
             id={props.id} 
@@ -26,7 +35,7 @@ export default function MenuPrincipalItem(props:MenuPrincipalItemProps) {
                 text-zinc-400 
                 rounded-md
                 hover:bg-zinc-800
-                ${ativo && `text-blue-400 bg-zinc-900`}
+                ${ativo && `text-${corDeDestaque} bg-zinc-900`}
         `}>
             {props.icone ?? <IconCode />}
             {!props.mini && props.titulo}
@@ -34,7 +43,7 @@ export default function MenuPrincipalItem(props:MenuPrincipalItemProps) {
                 <span className={`
                     px-2 rounded-full
                     text-white text-[11px]
-                    ${ativo ? 'bg-blue-500' : 'bg-zinc-700'}
+                    ${ativo ? `bg-${corDeDestaque}` : 'bg-zinc-700'}
                 `}>
                     {props.tag}                    
                 </span>
