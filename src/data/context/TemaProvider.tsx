@@ -15,7 +15,7 @@ export const ContextoTema = createContext<TemaContextoType | null>(null)
 export function TemaProvider(props:TemaProviderProps) {
     
     const [corDeDestaque, setCorDeDestaque] = useState('')
-
+    
     useEffect(()=>{
         if(corDeDestaque == ''){
             const corLocal = localStorage.getItem('temaCor') ?? listaDeCores[0]

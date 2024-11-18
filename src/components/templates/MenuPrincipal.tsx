@@ -1,27 +1,29 @@
 import { ReactNode } from "react"
-import { useEffect } from "react"
+//import { useEffect } from "react"
 //import { useState } from "react"
 import Logo from "./Logo"
 import { MenuSecao } from "@/data/models/menuSecao"
 import MenuPrincipalSecao from "./MenuPrincipalSecao"
 import { MenuItem } from "@/data/models/menuItem"
 import MenuPrincipalItem from "./MenuPrincipalItem"
-import { listaSecao } from "@/data/listaSecao"
-import useToggle from "@/data/hooks/useToggle"
+//import { listaSecao } from "@/data/listaSecao"
+//import useToggle from "@/data/hooks/useToggle"
 import { IconMenu, IconX } from "@tabler/icons-react"
-import useSizeWindow from "@/data/hooks/useSizeWindow"
-import { IsSectionOpenProvider } from "@/data/context/IsSectionOpen"
+//import useSizeWindow from "@/data/hooks/useSizeWindow"
+//import { IsSectionOpenProvider } from "@/data/context/IsSectionOpen"
+import useMenu from "@/data/hooks/useMenu"
 //import useBoolean from "@/data/hooks/useBoolean"
 
 
 
 export default function MenuPrincipal() {
-    
-    const [isMini, setIsMini, setTrue, setFalse] = useToggle (false)
+    const {secoes, isMini, setIsMini, alternarSecao} = useMenu()
+    //console.log(secoes[0].items)
+    //const [isMini, setIsMini, setTrue, setFalse] = useToggle (false)
     //const [isSectionOpen, setIsSectionOpen] = useToggle (true)
     //const [isMini, setIsMini,  miniTrue] = useBoolean()
     //console.log('renderizei MenuPrincipal')
-    const [tamanho, ] = useSizeWindow()
+    //const [tamanho, ] = useSizeWindow()
 
     /*
     useEffect(() => {
@@ -31,6 +33,7 @@ export default function MenuPrincipal() {
     }, [sizeGrupo, miniTrue])
     */
 
+    /*
     useEffect(() => {
         if(tamanho === 'md' || tamanho === 'sd') {
             setTrue()
@@ -38,33 +41,33 @@ export default function MenuPrincipal() {
             setFalse()
         }
     }, [tamanho, setTrue, setFalse])
-    
+    */
+
     function renderizarItems(listItems:MenuItem[]):NonNullable<ReactNode>{
-        return listItems.map((items:MenuItem, index) => (
+        return listItems.map((items:MenuItem) => (
             <MenuPrincipalItem 
-                key={index}
-                id={index.toString()}
+                key={`${items.titulo} - ${items.tag}`}
                 titulo={items.titulo} 
                 url={items.url} 
                 icone={items.icone}
                 tag={items.tag}
                 mini={isMini} 
+                selecionado={items.selecionado}
             />
         ))
     }
        
     function renderizarSecoes():NonNullable<ReactNode> { 
-        return listaSecao.map((secao:MenuSecao, index) => (
-            <IsSectionOpenProvider key={index}>
+        return secoes.map((secao:MenuSecao) => (
                 <MenuPrincipalSecao
-                    key={index}
-                    indice={index}
+                    key={`${secao.titulo}`}
                     titulo={secao.titulo} 
                     mini={isMini}
+                    aberta={secao.aberta}
+                    onClick={() => alternarSecao(secao)}
                 >
                     {renderizarItems(secao.items)}
                 </MenuPrincipalSecao>
-            </IsSectionOpenProvider>
         )) 
     }
 
