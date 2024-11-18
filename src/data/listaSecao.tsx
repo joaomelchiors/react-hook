@@ -109,5 +109,17 @@ export const listaSecao =
                 url: "/contexto/lojaComContexto",
             }
         ]
+    },
+    {
+        titulo: "Outros Hoocks",
+        aberta: true,
+        items: [
+            {
+                icone: <IconShoppingCartOff />,
+                titulo: "Memoização",
+                tag: "useMemo",
+                url: "/outros/memoizacao",
+            },
+        ]
     }
 ]

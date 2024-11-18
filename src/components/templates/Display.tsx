@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 interface DisplayProps {
-    texto: string;
+    texto: string | ReactNode;
     textoComplementar?: string
 }
 
