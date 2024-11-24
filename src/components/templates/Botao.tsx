@@ -8,13 +8,13 @@ interface BotaoProps {
     className?: string
     backGroundColor?: string
     redondo?: boolean
-    onClick?: () => void
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
     tamanho: Tamanho
 }
 
 export default function Botao(props:BotaoProps) {
 
-    
+    console.log("Renderizei botão")
 
     return (
         <button id="renderBotao" onClick={props.onClick}

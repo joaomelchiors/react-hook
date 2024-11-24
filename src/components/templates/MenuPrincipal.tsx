@@ -43,6 +43,8 @@ export default function MenuPrincipal() {
     }, [tamanho, setTrue, setFalse])
     */
 
+    console.log("renderizei menu principal")
+
     function renderizarItems(listItems:MenuItem[]):NonNullable<ReactNode>{
         return listItems.map((items:MenuItem) => (
             <MenuPrincipalItem 

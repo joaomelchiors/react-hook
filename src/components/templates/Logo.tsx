@@ -13,6 +13,8 @@ interface LogoProps {
 export default function Logo(props:LogoProps) {
     const contextTema = useTema()
 
+    console.log("renderizei logo")
+
     if(!contextTema) {
         return <p>Não há contextTema</p>
     }

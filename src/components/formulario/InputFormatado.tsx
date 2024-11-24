@@ -10,6 +10,9 @@ interface InputFormatadoProps {
 }
 
 export default function InputFormatado(props:InputFormatadoProps) {
+
+
+
     return(
         <>
             {props.label && (

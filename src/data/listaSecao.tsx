@@ -1,10 +1,10 @@
-import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconLock, IconMathGreater, IconNumbers, IconRefreshAlert, IconSection, IconShoppingCart, IconShoppingCartOff, IconUsers } from "@tabler/icons-react"
+import { IconAppWindow, IconArrowsLeftRight, IconBug, IconDimensions, IconFunction, IconLetterCase, IconLock, IconMathGreater, IconNumbers, IconPin, IconRefreshAlert, IconSection, IconShoppingCart, IconShoppingCartOff, IconUsers } from "@tabler/icons-react"
 
 export const listaSecao = 
 [
     {
         titulo: "Essenciais",
-        aberta: true,
+        aberta: false,
         items: [
             {
                 icone: <IconNumbers />,
@@ -70,7 +70,7 @@ export const listaSecao =
     },
     {
         titulo: "Personaliados",
-        aberta: true,
+        aberta: false,
         items: [
             {
                 icone: <IconAppWindow />,
@@ -94,7 +94,7 @@ export const listaSecao =
     },
     {
         titulo: "Contexto",
-        aberta: true,
+        aberta: false,
         items: [
             {
                 icone: <IconShoppingCartOff />,
@@ -115,10 +115,22 @@ export const listaSecao =
         aberta: true,
         items: [
             {
-                icone: <IconShoppingCartOff />,
-                titulo: "Memoização",
+                icone: <IconPin />,
+                titulo: "Memoização Elementos",
                 tag: "useMemo",
                 url: "/outros/memoizacao",
+            },
+            {
+                icone: <IconPin />,
+                titulo: "Memoização Referência",
+                tag: "useMemo",
+                url: "/outros/memoizacao2",
+            },
+            {
+                icone: <IconPin />,
+                titulo: "Memoização Funções",
+                tag: "useCallback",
+                url: "/outros/memoizandoFuncoes",
             },
         ]
     }
